@@ -13,7 +13,8 @@ window.iTunesSongChanged = function(info) {
   $('#artist').text(dict.artist);
   $('#album').text(dict.album);
   $('#cover img').attr('src', dict.AlbumPic);
-  return $('#full-time').text(GiFormatTime(dict.duration));
+  $('#full-time').text(GiFormatTime(dict.duration));
+  return GiUpdateRating(dict.rating);
 };
 window.iTunesLaunched = function(info) {
   console.log("Launched:");
@@ -26,6 +27,7 @@ window.iTunesClosed = function(info) {
   $("#artist").text(__("UNKNOW_ARTIST"));
   $("#album").text(__("UNKNOW_ALBUM"));
   GiPlayerPosition(0);
+  GiUpdateRating(0);
   return $("#lyric").html(__("NO_LYRIC"));
 };
 window.iTunesPlaying = function(info) {
@@ -54,4 +56,16 @@ window.GiFormatTime = function(num) {
     minute = '0' + minute;
   }
   return minute + ":" + second;
+};
+window.GiUpdateRating = function(rate) {
+  var i, m;
+  i = rate / 20;
+  for (m = 5; m >= 1; m--) {
+    if (m > i) {
+      $("#star-" + m).removeClass().addClass('love');
+    } else {
+      $('#star-' + m).removeClass().addClass('love-it');
+    }
+  }
+  return rate;
 };
