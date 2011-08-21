@@ -98,7 +98,6 @@ function GiNotPlaying(){
 
 function GiFormatTime(num){
 	num = parseInt(num);
-	
 	var second = num%60;
 	var minute =( num - second ) / 60;
 	if(second < 10){
