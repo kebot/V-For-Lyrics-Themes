@@ -1,0 +1,54 @@
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <title>V-For-Lyric</title>
+    <style type="text/css" media="screen">
+        body{background-color:yellow;}
+    </style>
+</head>
+<body>
+    <h3><img width="320" height="320" id="artwork" src="default.png"></h3>
+    <h3 id="title">标题</h3>
+    <h3 id="artist">作者</h3>
+    <h3 id="album">专辑</h3>
+    <p id="lyrics">
+    </p>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.js"></script>
+<script src="http://jashkenas.github.com/coffee-script/extras/coffee-script.js" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/coffeescript" charset="utf-8">
+# This is CoffeeScript
+window.iTunesSongChanged = (info)->
+    console.log info
+    dict = jQuery.parseJSON info
+    console.log "song changed:"
+    $('#title').text(dict.title)
+    $('#artist').text(dict.artist)
+    $('#album').text(dict.album)
+    $('img#artwork').attr('src',dict.AlbumPic)
+
+window.iTunesLaunched = (info)->
+    console.log "Launched:"
+#    console.log info
+
+window.iTunesClosed = (info)->
+    console.log "closed:"
+#    console.log info
+
+window.iTunesPlaying = (info)->
+#    $('lyrics').append(info.currentLyric)
+
+window.iTunesLyricsReady= (info)->
+    console.log "Lyrics Ready:"
+#    console.log info
+</script>
+
+
+<script type="text/javascript" charset="utf-8">
+
+</script>
+
+
+
+</body>
+</html>
