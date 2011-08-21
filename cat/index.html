@@ -1,54 +1,59 @@
-<html>
-<head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <title>V-For-Lyric</title>
-    <style type="text/css" media="screen">
-        body{background-color:yellow;}
-    </style>
-</head>
-<body>
-    <h3><img width="320" height="320" id="artwork" src="default.png"></h3>
-    <h3 id="title">标题</h3>
-    <h3 id="artist">作者</h3>
-    <h3 id="album">专辑</h3>
-    <p id="lyrics">
-    </p>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.js"></script>
-<script src="http://jashkenas.github.com/coffee-script/extras/coffee-script.js" type="text/javascript" charset="utf-8"></script>
-
-<script type="text/coffeescript" charset="utf-8">
-# This is CoffeeScript
-window.iTunesSongChanged = (info)->
-    console.log info
-    dict = jQuery.parseJSON info
-    console.log "song changed:"
-    $('#title').text(dict.title)
-    $('#artist').text(dict.artist)
-    $('#album').text(dict.album)
-    $('img#artwork').attr('src',dict.AlbumPic)
-
-window.iTunesLaunched = (info)->
-    console.log "Launched:"
-#    console.log info
-
-window.iTunesClosed = (info)->
-    console.log "closed:"
-#    console.log info
-
-window.iTunesPlaying = (info)->
-#    $('lyrics').append(info.currentLyric)
-
-window.iTunesLyricsReady= (info)->
-    console.log "Lyrics Ready:"
-#    console.log info
-</script>
-
-
-<script type="text/javascript" charset="utf-8">
-
-</script>
-
-
-
-</body>
-</html>
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Keith Yao</title>
+        <link rel="stylesheet" type="text/css" href="cat.css" media="all">
+		<script type="text/javascript" src="/libs/jquery.min.js"></script>
+    </head>
+    <body>
+        <div id="info-mask">&nbsp;</div>
+        <div id="wrapper">
+            <div id="inner" class="clearfix">
+                <div id="cover" onClick=""><img src="default.png" /></div>
+                <div id="vol" class=" clearfix">
+                    <div id="vol-down"></div>
+                    <ul class="clearfix">
+                        <li></li><li></li><li></li><li></li><li></li>
+                        <li></li><li></li><li></li><li></li><li></li>
+                        <li></li><li></li><li></li><li></li><li></li>
+                        <li></li><li></li><li></li><li></li><li></li>
+                        <li></li><li></li><li></li><li></li><li></li>
+                        <li></li><li></li><li></li><li></li><li></li>
+                        <li></li><li></li>
+                    </ul>
+                    <div id="vol-up"></div>
+                </div>
+                <div id="power" onClick="playPause();"></div>
+                <div id="panel">
+					<div id="info">
+                      <div id="title">Title</div>
+                    	<div id="artist">Artist</div>
+                    	<div id="album">Album</div>
+					</div>
+					<div id="statu">
+						<div id="progress-bar">
+							<div class="blank">&nbsp;</div>
+						</div>
+						<div id='player-position'>03:12</div>
+						<div id='full-time'>04:25</div>
+					</div>
+					<menu>
+	                    <li id="next" class="tooltip" title="跳过曲目" onClick="nextSong()"></li>
+	                    <li id="playpause" class="tooltip pause" title="PLAY_PAUSE" onClick="playPause();"></li>
+						<li id="previous" class="tooltip" title="前一首" onClick="previousSong()"></li>
+	                </menu>
+                </div>
+            </div>
+        </div>
+		<div id="stars">
+			<li id="star-5" class="love-it tooltip" onClick="rate(100);"></li>
+			<li id="star-4" class="love-it tooltip" onClick="rate(80);"></li>
+			<li id="star-3" class="love-it tooltip" onClick="rate(60);"></li>
+			<li id="star-2" class="love-it tooltip" onClick="rate(40);"></li>
+			<li id="star-1" class="love-it tooltip" onClick="rate(20);"></li>
+			<li id="star-1" class="tooltip" onClick="rate(0);">-</li>
+		</div>
+		<div id="config" style="display:none;">
+		</div>
+		<div id="lyric">
+		</div>
+</body></html>

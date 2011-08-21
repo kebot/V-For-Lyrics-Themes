@@ -1,0 +1,72 @@
+*{margin:0px;padding:0px;font-family: Helvetica;cursor:default;}
+a{color:#666666;cursor:pointer;}
+
+li { list-style: none;}
+/* basic */
+body { 
+	-webkit-user-focus: ignore; 
+	-webkit-user-select: none; 
+	-moz-user-focus: ignore; 
+	-moz-user-select: none ;
+	background: url(./bg.png) no-repeat top left 
+}
+
+#wrapper {width: 420px;height: 160px;background-position: 0 -324px;-webkit-border-radius: 6px;}
+
+#cover { float: left; margin-left: 19px;margin-top:15px;width:125px ; height:125px; }
+#cover img { margin: 4px 0px 0px 3px;width:118px ; height:118px;cursor: pointer;-webkit-border-radius:5px;}
+
+#panel{ width: 237px;height: 128px;float: left;margin-left: 20px;margin-top: 15px;}
+#info {margin: 13px 0px 0px 20px;}
+
+menu{float:left;width:170px;height:28px;margin-left:auto;margin-top: 4px;} /*cat*/
+
+menu li { float: right;background-repeat:no-repeat;}
+
+#next,#previous{width:20px;height:12px;}
+#next{background:url(./next.png);}
+#previous{background:url(./previous.png);}
+#playpause{margin:0px 25px 0px 25px;width:16px;height:18px;margin-top:-3px;background-repeat:no-repeat;}
+
+.play{background:url(./play.png);}
+.pause{background:url(./pause.png);}
+
+/*song info*/
+#info div {float:left;width:200px;white-space:nowrap;overflow:hidden;}
+#title{font-weight:900;font-size:16px;margin-bottom:4px;}
+#artist,#album{font-size:12px;font-weight:700;line-height:16px;}
+#album{margin-bottom:10px;} /*cat*/
+#info-mask{left: 369px;top: 12px;position: absolute;
+  width: 43px;
+  height: 71px;background: url(mask.png);z-index:18;}
+
+/*status*/
+#statu {height:24px;}
+#progress-bar{height:4px;width:200px;background-color:#B8B8B8;overflow:hidden;margin-left:20px;-webkit-border-radius: 5px;}
+#progress-bar .blank{height:4px;width:200px;background-color:#D8D8D8;margin-right:-150px;}
+#player-position,#full-time{font-size:10px;}  /*cat*/
+#player-position{float:left;margin-left:20px;}
+#full-time{float:right;margin-right: 18px;}
+
+
+/*stars*/
+#stars{width:60px;height:180px;float:left;padding-top:14px;}
+#stars li{ list-style: none;width:60px;height:30px;}
+.love-it{background:url(./star_light.png);}
+.love{background:url(./star_fade.png);}
+
+#vol {display:none;}
+#lyric div, li{	cursor:pointer;}
+#config{overflow-y:scroll;}
+.current-line{font-weight:900;color:#000000;}
+
+#config,#lyric {
+	float:left;
+	width:340px;
+	height:180px;
+	overflow:hidden;
+	text-align:center;
+	line-height:25px;
+	font-size:13px;
+	color:#333333;
+}
