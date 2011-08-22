@@ -1,14 +1,13 @@
-var GiPlayerPosition;
 window.__ = function(key) {
   return key;
 };
 window.track = {};
 window.iTunesSongChanged = function(info) {
   var dict;
+  console.log("song changed:");
   console.log(info);
   dict = jQuery.parseJSON(info);
   window.track = dict;
-  console.log("song changed:");
   $('#title').text(dict.title);
   $('#artist').text(dict.artist);
   $('#album').text(dict.album);
@@ -37,12 +36,18 @@ window.iTunesPlaying = function(info) {
 };
 window.iTunesLyricsReady = function(info) {
   console.log("Lyrics Ready:");
-  return console.log(info);
+  if (window['lyric']) {
+    return window.lyric.update(info);
+  }
 };
-GiPlayerPosition = function(position) {
-  position = position / 1000;
+window.GiPlayerPosition = function(position) {
+  var _position;
+  _position = position / 1000;
   $(".blank").css("margin-left", parseInt(200 * position / track.duration));
-  return $("#player-position").html(GiFormatTime(position));
+  $("#player-position").html(GiFormatTime(_position));
+  if (window['lyric']) {
+    return window.lyric.pos(position);
+  }
 };
 window.GiFormatTime = function(num) {
   var minute, second;

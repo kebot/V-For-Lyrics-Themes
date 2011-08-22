@@ -39,7 +39,6 @@ function bindEvent(){
 		Lyric.auto_scroll = true;
 		if(lyric_song_moveto){
 			var pos = Lyric.getTimeFromScrollTop(lyric_song_moveto);
-			//debug(pos);
 			Lyric.playerPosition(pos);
 		}
 	};

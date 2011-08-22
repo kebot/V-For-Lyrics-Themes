@@ -5,10 +5,10 @@ window.__ = (key)->
 window.track = {}
 
 window.iTunesSongChanged = (info)->
+    console.log "song changed:"
     console.log info
     dict = jQuery.parseJSON info
     window.track = dict
-    console.log "song changed:"
     $('#title').text(dict.title)
     $('#artist').text(dict.artist)
     $('#album').text(dict.album)
@@ -36,12 +36,14 @@ window.iTunesPlaying = (info)->
 
 window.iTunesLyricsReady= (info)->
     console.log "Lyrics Ready:"
-    console.log info
+    window.lyric.update info if window['lyric']
 
-GiPlayerPosition= (position)->
-    position = position/1000
+#function
+window.GiPlayerPosition= (position)->
+    _position = position/1000
     $(".blank").css("margin-left",parseInt(200*position/track.duration ))
-    $("#player-position").html( GiFormatTime(position) )
+    $("#player-position").html( GiFormatTime(_position) )
+    window.lyric.pos(position) if window['lyric']
     # Lyric.scrollLyric();
 
 window.GiFormatTime = (num)->
